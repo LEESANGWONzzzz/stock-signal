@@ -139,6 +139,7 @@ def scrape_reports(sdate: str, edate: str) -> tuple[list[dict], dict]:
                 "작성자":    analyst_txt,
                 "증권사":    source_txt,
                 "리포트URL":  report_url,
+                "리포트제목":  full_title[code_m.end():].strip() or stock_name,
             })
             batch_count += 1
 
@@ -180,7 +181,10 @@ def deduplicate(records: list[dict]) -> list[dict]:
             "리포트수":   len(items),
             "투자의견":   opinions.most_common(1)[0][0],
             "증권사":    ", ".join(firms),
-            "리포트URL":  items[0]["리포트URL"],
+            "리포트목록":  [
+                {"증권사": i["증권사"], "제목": i["리포트제목"], "url": i["리포트URL"]}
+                for i in items if i["리포트URL"]
+            ],
         })
     return result
 

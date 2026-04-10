@@ -7,7 +7,13 @@
     "리포트수": 1,
     "투자의견": "매수",
     "증권사": "SK증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648268",
+    "리포트목록": [
+      {
+        "증권사": "SK증권",
+        "제목": "매수 접근하기 좋은 가격대",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648268"
+      }
+    ],
     "현재가": 50300,
     "상승여력(%)": 57.06
   },
@@ -19,7 +25,33 @@
     "리포트수": 5,
     "투자의견": "Buy",
     "증권사": "한화투자증권, 메리츠증권, 대신증권, iM증권, LS증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648293",
+    "리포트목록": [
+      {
+        "증권사": "한화투자증권",
+        "제목": "2026 CEO Investor Day Review",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648293"
+      },
+      {
+        "증권사": "메리츠증권",
+        "제목": "2026 CID Takeaways",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648282"
+      },
+      {
+        "증권사": "대신증권",
+        "제목": "2026년 CID 리뷰 : 시간이 해결해 줄 것 (+QnA 전체 요약)",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648281"
+      },
+      {
+        "증권사": "iM증권",
+        "제목": "CID 2026 Review: 기다리면 복이 온다",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648261"
+      },
+      {
+        "증권사": "LS증권",
+        "제목": "CEO Investor Day 후기",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648253"
+      }
+    ],
     "현재가": 149000,
     "상승여력(%)": 52.35
   },
@@ -31,7 +63,18 @@
     "리포트수": 2,
     "투자의견": "Buy",
     "증권사": "한화투자증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648295",
+    "리포트목록": [
+      {
+        "증권사": "한화투자증권",
+        "제목": "1Q 기대감은 내려놓지만, 다시 사볼만한 구간",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648295"
+      },
+      {
+        "증권사": "한화투자증권",
+        "제목": "1Q 기대감은 내려놓지만, 다시 사볼만한 구간",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648294"
+      }
+    ],
     "현재가": 254000,
     "상승여력(%)": 49.61
   },
@@ -43,7 +86,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "iM증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648262",
+    "리포트목록": [
+      {
+        "증권사": "iM증권",
+        "제목": "실적은 탄탄, 모멘텀은 팡팡",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648262"
+      }
+    ],
     "현재가": 48350,
     "상승여력(%)": 44.78
   },
@@ -55,7 +104,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "유안타증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648289",
+    "리포트목록": [
+      {
+        "증권사": "유안타증권",
+        "제목": "2026년 가장 높은 자사주 매입 증가율 예상",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648289"
+      }
+    ],
     "현재가": 18080,
     "상승여력(%)": 43.81
   },
@@ -67,7 +122,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "유진투자증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648248",
+    "리포트목록": [
+      {
+        "증권사": "유진투자증권",
+        "제목": "밸류에이션 프리미엄 정당화 국면",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648248"
+      }
+    ],
     "현재가": 199700,
     "상승여력(%)": 40.21
   },
@@ -79,7 +140,18 @@
     "리포트수": 2,
     "투자의견": "Buy",
     "증권사": "한화투자증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648291",
+    "리포트목록": [
+      {
+        "증권사": "한화투자증권",
+        "제목": "신규원전 사업 첫 진입 성공",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648291"
+      },
+      {
+        "증권사": "한화투자증권",
+        "제목": "신규원전 사업 첫 진입 성공",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648290"
+      }
+    ],
     "현재가": 33150,
     "상승여력(%)": 38.76
   },
@@ -91,7 +163,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "LS증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648259",
+    "리포트목록": [
+      {
+        "증권사": "LS증권",
+        "제목": "나도 원전 해봤다",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648259"
+      }
+    ],
     "현재가": 37650,
     "상승여력(%)": 35.46
   },
@@ -103,7 +181,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "LS증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648258",
+    "리포트목록": [
+      {
+        "증권사": "LS증권",
+        "제목": "아직도 편안한 밸류에이션",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648258"
+      }
+    ],
     "현재가": 94500,
     "상승여력(%)": 35.45
   },
@@ -115,7 +199,13 @@
     "리포트수": 1,
     "투자의견": "매수",
     "증권사": "SK증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648274",
+    "리포트목록": [
+      {
+        "증권사": "SK증권",
+        "제목": "새로운 게 필요해",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648274"
+      }
+    ],
     "현재가": 67000,
     "상승여력(%)": 34.33
   },
@@ -127,7 +217,18 @@
     "리포트수": 2,
     "투자의견": "매수",
     "증권사": "SK증권, LS증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648267",
+    "리포트목록": [
+      {
+        "증권사": "SK증권",
+        "제목": "765kV 모멘텀 본격화",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648267"
+      },
+      {
+        "증권사": "LS증권",
+        "제목": "1Q26 YoY 대호조 지속 & 컨센서스 부합 전망",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648257"
+      }
+    ],
     "현재가": 2940000,
     "상승여력(%)": 30.95
   },
@@ -139,7 +240,13 @@
     "리포트수": 1,
     "투자의견": "매수",
     "증권사": "SK증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648269",
+    "리포트목록": [
+      {
+        "증권사": "SK증권",
+        "제목": "열린 마음으로 보자",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648269"
+      }
+    ],
     "현재가": 186700,
     "상승여력(%)": 28.55
   },
@@ -151,7 +258,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "LS증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648256",
+    "리포트목록": [
+      {
+        "증권사": "LS증권",
+        "제목": "넥스피어-F, 일본 파트너십 체결",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648256"
+      }
+    ],
     "현재가": 66600,
     "상승여력(%)": 24.62
   },
@@ -163,7 +276,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "메리츠증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648283",
+    "리포트목록": [
+      {
+        "증권사": "메리츠증권",
+        "제목": "유일무이",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648283"
+      }
+    ],
     "현재가": 565000,
     "상승여력(%)": 23.89
   },
@@ -175,7 +294,13 @@
     "리포트수": 1,
     "투자의견": "매수",
     "증권사": "SK증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648272",
+    "리포트목록": [
+      {
+        "증권사": "SK증권",
+        "제목": "남다른 안정감",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648272"
+      }
+    ],
     "현재가": 93000,
     "상승여력(%)": 18.28
   },
@@ -187,7 +312,13 @@
     "리포트수": 1,
     "투자의견": "Buy",
     "증권사": "유진투자증권",
-    "리포트URL": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648250",
+    "리포트목록": [
+      {
+        "증권사": "유진투자증권",
+        "제목": "배당주에겐 무난 is Good",
+        "url": "https://consensus.hankyung.com/analysis/downpdf?report_idx=648250"
+      }
+    ],
     "현재가": 17410,
     "상승여력(%)": 9.13
   }

@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
 
+interface ReportItem {
+  증권사: string;
+  제목: string;
+  url: string;
+}
+
 interface Stock {
   종목명: string;
   종목코드: string;
@@ -10,7 +16,7 @@ interface Stock {
   투자의견: string;
   증권사: string;
   리포트수?: number;
-  리포트URL?: string;
+  리포트목록?: ReportItem[];
 }
 
 interface Props {
@@ -34,6 +40,7 @@ function opinionStyle(op: string) {
 export default function StockTable({ stocks }: Props) {
   const [sortKey, setSortKey] = useState<"상승여력(%)" | "목표주가" | "현재가">("상승여력(%)");
   const [search, setSearch] = useState("");
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const filtered = stocks
     .filter(
@@ -150,23 +157,71 @@ export default function StockTable({ stocks }: Props) {
 
                   {/* 종목명 */}
                   <td className="px-4 py-4">
-                    {s.리포트URL ? (
-                      <a
-                        href={s.리포트URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-semibold hover:underline"
-                        style={{ color: "#e2e8f0" }}
-                        title="리포트 PDF 다운로드"
-                      >
-                        {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
-                        <span className="ml-1.5 text-xs" style={{ color: "#3b82f6" }}>↓</span>
-                      </a>
-                    ) : (
-                      <span className="text-white font-semibold">
-                        {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
-                      </span>
-                    )}
+                    <div className="relative inline-block">
+                      {s.리포트목록?.length === 1 ? (
+                        // 리포트 1개: 바로 링크
+                        <a
+                          href={s.리포트목록[0].url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold hover:underline"
+                          style={{ color: "#e2e8f0" }}
+                          title={s.리포트목록[0].제목}
+                        >
+                          {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
+                          <span className="ml-1.5 text-xs" style={{ color: "#3b82f6" }}>↓</span>
+                        </a>
+                      ) : s.리포트목록?.length! > 1 ? (
+                        // 리포트 여러 개: 드롭다운
+                        <>
+                          <button
+                            onClick={() => setOpenDropdown(openDropdown === s.종목코드 ? null : s.종목코드)}
+                            className="font-semibold text-left"
+                            style={{ color: "#e2e8f0" }}
+                          >
+                            {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
+                            <span
+                              className="ml-1.5 text-xs px-1.5 py-0.5 rounded-full font-bold"
+                              style={{ background: "rgba(59,130,246,0.2)", color: "#3b82f6" }}
+                            >
+                              {s.리포트목록!.length}↓
+                            </span>
+                          </button>
+                          {openDropdown === s.종목코드 && (
+                            <div
+                              className="absolute left-0 top-full mt-1 z-50 rounded-lg overflow-hidden text-xs"
+                              style={{
+                                background: "#1a2235",
+                                border: "1px solid #1e3a5f",
+                                minWidth: 220,
+                                boxShadow: "0 8px 24px rgba(0,0,0,0.5)",
+                              }}
+                            >
+                              {s.리포트목록!.map((r, idx) => (
+                                <a
+                                  key={idx}
+                                  href={r.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2 px-3 py-2.5 hover:bg-white/5"
+                                  style={{ color: "#94a3b8", borderBottom: idx < s.리포트목록!.length - 1 ? "1px solid #1e3a5f" : "none" }}
+                                  onClick={() => setOpenDropdown(null)}
+                                >
+                                  <span style={{ color: "#3b82f6" }}>↓</span>
+                                  <span style={{ color: "#f59e0b", whiteSpace: "nowrap" }}>{r.증권사}</span>
+                                  <span className="truncate">{r.제목 || "리포트 보기"}</span>
+                                </a>
+                              ))}
+                            </div>
+                          )}
+                        </>
+                      ) : (
+                        // 리포트 없음
+                        <span className="font-semibold text-white">
+                          {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
+                        </span>
+                      )}
+                    </div>
                     {isTop && (
                       <span
                         className="ml-2 text-xs px-1.5 py-0.5 rounded"
