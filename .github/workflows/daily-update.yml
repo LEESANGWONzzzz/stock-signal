@@ -1,0 +1,43 @@
+name: Daily Stock Data Update
+
+on:
+  schedule:
+    # 매일 한국시간 08:40 (UTC 23:40) 실행
+    - cron: '40 23 * * *'
+  workflow_dispatch: # 수동 실행 버튼
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Seoul  # datetime.today()가 KST 기준으로 동작하도록
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: pip install requests beautifulsoup4 lxml FinanceDataReader
+
+      - name: Run scraper
+        run: python target_price_analyzer.py
+
+      - name: Copy result to dashboard
+        run: |
+          TODAY=$(date +'%Y%m%d')
+          cp upside_${TODAY}.json stock-dashboard/public/stocks.json
+          echo "✅ upside_${TODAY}.json → stock-dashboard/public/stocks.json 복사 완료"
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_xKnxbCc5AwDrK3iKqwdga6Nm
+          VERCEL_PROJECT_ID: prj_WpwJ3rV7OVRWAfK0YQyFla5aGIxW
+        run: |
+          cd stock-dashboard
+          npx vercel --prod --yes --token "$VERCEL_TOKEN"

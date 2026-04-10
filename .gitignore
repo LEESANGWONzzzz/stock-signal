@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# 스크래퍼 일별 출력 (stocks.json 만 관리)
+upside_*.json
+consensus_*.json
+
+# 카드뉴스 이미지 (로컬 생성물)
+card_*.png
+
+# macOS
+.DS_Store
+
+# Next.js (하위 .gitignore 와 중복 방지)
+stock-dashboard/node_modules/
+stock-dashboard/.next/
+stock-dashboard/.vercel/
