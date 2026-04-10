@@ -117,7 +117,7 @@ def scrape_reports(sdate: str, edate: str) -> tuple[list[dict], dict]:
                 stats["skip_no_code"] += 1
                 continue
             stock_code = code_m.group(1)
-            stock_name = clean_title(full_title)
+            stock_name = full_title[:code_m.start()].strip()
 
             # 목표주가 추출 (정규식)
             target_price = extract_number(target_txt)
