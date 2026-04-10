@@ -10,6 +10,7 @@ interface Stock {
   투자의견: string;
   증권사: string;
   리포트수?: number;
+  리포트URL?: string;
 }
 
 interface Props {
@@ -149,9 +150,23 @@ export default function StockTable({ stocks }: Props) {
 
                   {/* 종목명 */}
                   <td className="px-4 py-4">
-                    <span className="text-white font-semibold">
-                      {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
-                    </span>
+                    {s.리포트URL ? (
+                      <a
+                        href={s.리포트URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold hover:underline"
+                        style={{ color: "#e2e8f0" }}
+                        title="리포트 PDF 다운로드"
+                      >
+                        {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
+                        <span className="ml-1.5 text-xs" style={{ color: "#3b82f6" }}>↓</span>
+                      </a>
+                    ) : (
+                      <span className="text-white font-semibold">
+                        {s.종목명.length > 12 ? s.종목명.slice(0, 12) + "…" : s.종목명}
+                      </span>
+                    )}
                     {isTop && (
                       <span
                         className="ml-2 text-xs px-1.5 py-0.5 rounded"

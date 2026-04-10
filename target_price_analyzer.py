@@ -119,6 +119,11 @@ def scrape_reports(sdate: str, edate: str) -> tuple[list[dict], dict]:
             stock_code = code_m.group(1)
             stock_name = full_title[:code_m.start()].strip()
 
+            # 리포트 URL 추출
+            a_tag = title_td.find("a")
+            href = a_tag.get("href", "") if a_tag else ""
+            report_url = f"https://consensus.hankyung.com{href}" if href.startswith("/") else href
+
             # 목표주가 추출 (정규식)
             target_price = extract_number(target_txt)
             if target_price <= 0:
@@ -133,6 +138,7 @@ def scrape_reports(sdate: str, edate: str) -> tuple[list[dict], dict]:
                 "투자의견":   opinion_txt.strip(),
                 "작성자":    analyst_txt,
                 "증권사":    source_txt,
+                "리포트URL":  report_url,
             })
             batch_count += 1
 
@@ -174,6 +180,7 @@ def deduplicate(records: list[dict]) -> list[dict]:
             "리포트수":   len(items),
             "투자의견":   opinions.most_common(1)[0][0],
             "증권사":    ", ".join(firms),
+            "리포트URL":  items[0]["리포트URL"],
         })
     return result
 
