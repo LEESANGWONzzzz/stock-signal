@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0a0e1a;
+  --bg-card: #111827;
+  --bg-card2: #1a2235;
+  --accent: #f59e0b;
+  --accent2: #fbbf24;
+  --up: #10b981;
+  --down: #ef4444;
+  --border: #1e3a5f;
+  --text-muted: #64748b;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: #e2e8f0;
+  font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0a0e1a; }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
+
+.card-glow {
+  box-shadow: 0 0 0 1px rgba(245,158,11,0.1), 0 4px 24px rgba(0,0,0,0.4);
+  transition: all 0.2s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(245,158,11,0.3), 0 8px 32px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
+
+.gradient-text {
+  background: linear-gradient(135deg, #f59e0b, #fde68a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stock-row { transition: background 0.15s ease; }
+.stock-row:hover td { background-color: rgba(245,158,11,0.06) !important; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.5s ease both; }

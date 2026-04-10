@@ -16,3 +16,6 @@ card_*.png
 stock-dashboard/node_modules/
 stock-dashboard/.next/
 stock-dashboard/.vercel/
+
+.bkit/
+.claude/
