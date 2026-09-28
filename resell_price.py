@@ -41,20 +41,51 @@ FIELD_CANDIDATES = {
 # ── Apify 호출 ────────────────────────────────────────────────────────────────
 
 def run_actor(actor: str, actor_input: dict, token: str) -> list[dict]:
-    """Actor 를 동기 실행하고 결과 데이터셋을 그대로 반환 (최대 5분 대기)."""
-    url = f"{APIFY_BASE}/acts/{actor}/run-sync-get-dataset-items"
+    """Actor 를 실행해 끝날 때까지 기다린 뒤 결과 데이터셋을 반환 (최대 약 5분)."""
+    headers = {"Authorization": f"Bearer {token}"}
     resp = requests.post(
-        url,
-        json=actor_input,
-        headers={"Authorization": f"Bearer {token}"},
-        timeout=320,
+        f"{APIFY_BASE}/acts/{actor}/runs?waitForFinish=60",
+        json=actor_input, headers=headers, timeout=90,
     )
     if resp.status_code == 402:
         raise SystemExit("❌ Apify 무료 크레딧을 모두 썼습니다. 다음 달에 초기화됩니다.")
     if resp.status_code == 401:
         raise SystemExit("❌ APIFY_TOKEN 이 올바르지 않습니다.")
-    resp.raise_for_status()
-    return resp.json()
+    if resp.status_code >= 400:
+        raise SystemExit(f"❌ Actor 실행 요청 실패 ({resp.status_code}): {resp.text[:500]}")
+    run = resp.json()["data"]
+
+    # waitForFinish 는 최대 60초라서, 아직 실행 중이면 계속 기다린다.
+    for _ in range(4):
+        if run["status"] not in ("READY", "RUNNING"):
+            break
+        run = requests.get(
+            f"{APIFY_BASE}/actor-runs/{run['id']}?waitForFinish=60",
+            headers=headers, timeout=90,
+        ).json()["data"]
+
+    items = requests.get(
+        f"{APIFY_BASE}/datasets/{run['defaultDatasetId']}/items?clean=true",
+        headers=headers, timeout=60,
+    ).json()
+
+    if run["status"] != "SUCCEEDED" or not items:
+        print_run_diagnostics(run, headers)
+    return items
+
+
+def print_run_diagnostics(run: dict, headers: dict) -> None:
+    """결과가 비었거나 실패했을 때 원인 파악용 정보 출력."""
+    print(f"  ⚠️ 실행 상태: {run['status']}  {run.get('statusMessage') or ''}")
+    print(f"  🔗 실행 상세: https://console.apify.com/view/runs/{run['id']}")
+    log = requests.get(
+        f"{APIFY_BASE}/actor-runs/{run['id']}/log", headers=headers, timeout=30,
+    ).text
+    tail = log.strip().splitlines()[-15:]
+    if tail:
+        print("  📜 Actor 로그 (마지막 15줄):")
+        for line in tail:
+            print(f"     {line}")
 
 
 def search_kream(keyword: str, limit: int, token: str) -> list[dict]:
@@ -116,6 +147,9 @@ def save_json(platform: str, items: list[dict]) -> str:
 # ── main ─────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    # Windows cmd(cp949) 에서 로그의 특수문자 때문에 멈추지 않도록
+    sys.stdout.reconfigure(errors="replace")
+
     parser = argparse.ArgumentParser(description="크림/포이즌 리셀 시세 조회 (Apify 무료 플랜)")
     parser.add_argument("platform", choices=["kream", "poizon", "both"])
     parser.add_argument("query", help="크림: 검색어 또는 품번 / 포이즌: 품번 (예: DD1391-100)")
